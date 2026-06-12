@@ -3,11 +3,8 @@
 ## Public URL
 
 ```
-https://your-app.up.railway.app
+https://lab12-2a202600551-nguyenquoctien-production.up.railway.app
 ```
-
-> **Note:** Thay URL bằng URL thật sau khi deploy xong.
-> Lấy URL bằng lệnh: `railway domain`
 
 ## Platform
 
@@ -18,21 +15,21 @@ Railway
 ### Health Check
 
 ```bash
-curl https://your-app.up.railway.app/health
+curl https://lab12-2a202600551-nguyenquoctien-production.up.railway.app/health
 # Expected: {"status":"ok","version":"1.0.0",...}
 ```
 
 ### Readiness Check
 
 ```bash
-curl https://your-app.up.railway.app/ready
+curl https://lab12-2a202600551-nguyenquoctien-production.up.railway.app/ready
 # Expected: {"ready":true}
 ```
 
 ### API Test (without key — should return 401)
 
 ```bash
-curl -X POST https://your-app.up.railway.app/ask \
+curl -X POST https://lab12-2a202600551-nguyenquoctien-production.up.railway.app/ask \
   -H "Content-Type: application/json" \
   -d '{"question": "Hello"}'
 # Expected: 401 Unauthorized
@@ -41,8 +38,8 @@ curl -X POST https://your-app.up.railway.app/ask \
 ### API Test (with key — should return 200)
 
 ```bash
-curl -X POST https://your-app.up.railway.app/ask \
-  -H "X-API-Key: my-secret-key" \
+curl -X POST https://lab12-2a202600551-nguyenquoctien-production.up.railway.app/ask \
+  -H "X-API-Key: dev-key-change-me" \
   -H "Content-Type: application/json" \
   -d '{"question": "Hello"}'
 # Expected: 200 OK with answer
@@ -53,8 +50,8 @@ curl -X POST https://your-app.up.railway.app/ask \
 ```bash
 # Gọi liên tục 25 lần — request thứ 21+ sẽ bị 429
 for i in {1..25}; do
-  curl -s -X POST https://your-app.up.railway.app/ask \
-    -H "X-API-Key: my-secret-key" \
+  curl -s -X POST https://lab12-2a202600551-nguyenquoctien-production.up.railway.app/ask \
+    -H "X-API-Key: dev-key-change-me" \
     -H "Content-Type: application/json" \
     -d "{\"question\": \"Test $i\"}"
   echo ""
